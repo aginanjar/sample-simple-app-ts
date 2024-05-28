@@ -1,13 +1,16 @@
 import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+  log: ['query', 'info', 'warn', 'error'],
+});
 
 export const getProfiles = async (userId: number) => {
 
-  console.log('userId', userId);
-  const profiles = await prisma.profile.findMany({
+  const profiles = await prisma.user.findMany({
     where: {
-      userId: { not: userId },
+      id: {
+        not: userId,
+      },
     },
     take: 10,
   });
