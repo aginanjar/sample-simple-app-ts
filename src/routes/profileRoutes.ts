@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.use(authMiddleware);
 
-router.get('/get', getProfile);
+router.get('/', getProfile);
 router.post('/swipe', swipe);
 
 export default router;
