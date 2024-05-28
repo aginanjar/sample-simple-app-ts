@@ -7,7 +7,6 @@ interface RequestWithUser extends Request {
 
 export const getProfile = async (req: Request, res: Response) => {
   try {
-    console.log((req as RequestWithUser).user);
     const profiles = await getProfiles( (req as RequestWithUser).user.id);
     res.status(200).json(profiles);
   } catch (err) {
